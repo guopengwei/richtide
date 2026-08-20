@@ -1,0 +1,43 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "richtide-investor-research",
+  "main": "src/worker.ts",
+  "compatibility_date": "2026-08-20",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": { "enabled": true, "head_sampling_rate": 1 },
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*", "/health/*"]
+  },
+  "durable_objects": {
+    "bindings": [
+      { "name": "IDENTITY", "class_name": "IdentityDurableObject" }
+    ]
+  },
+  "send_email": [
+    { "name": "EMAIL", "allowed_sender_addresses": ["account@rich-tide.com"] }
+  ],
+  "migrations": [
+    { "tag": "v1", "new_sqlite_classes": ["IdentityDurableObject"] }
+  ],
+  "vars": {
+    "APP_ENV": "development"
+  },
+  "env": {
+    "staging": {
+      "name": "richtide-investor-research-staging",
+      "durable_objects": {
+        "bindings": [
+          { "name": "IDENTITY", "class_name": "IdentityDurableObject" }
+        ]
+      },
+      "send_email": [
+        { "name": "EMAIL", "allowed_sender_addresses": ["account@rich-tide.com"] }
+      ],
+      "vars": {
+        "APP_ENV": "staging"
+      }
+    }
+  }
+}

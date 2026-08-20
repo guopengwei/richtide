@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="RichTide">
+  <rect width="512" height="512" rx="96" fill="#251d18"/>
+  <path d="M112 330c70-8 100-52 144-130 42 85 84 120 144 130" fill="none" stroke="#d4b168" stroke-width="34" stroke-linecap="round"/>
+  <path d="M128 368h256" stroke="#f4ecdc" stroke-width="22" stroke-linecap="round"/>
+</svg>
